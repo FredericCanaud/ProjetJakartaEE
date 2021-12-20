@@ -1,3 +1,5 @@
+package entities;
+
 public abstract class Personne{
     protected String pseudo;
     private String mail;

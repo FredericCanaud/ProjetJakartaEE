@@ -1,10 +1,12 @@
+package entities.managers;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Organisateur{
+public class OrganisateurManager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -13,9 +15,9 @@ public class Organisateur{
     private String mail;
     private String mdp;
 
-    public Organisateur(){}
+    public OrganisateurManager(){}
 
-    public Organisateur(long id, String pseudo, String mail, String mdp){
+    public OrganisateurManager(long id, String pseudo, String mail, String mdp){
         this.id = id;
         this.pseudo = pseudo;
         this.mail = mail;

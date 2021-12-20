@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <ui:composition template="resources/header.xhtml" >
+        <ui:define name="content">
+            <h:form>
+                <table id="checkoutTable">
+                    <tr>
+                        <td><label for="type">Vous êtes un :</label></td>
+                        <td class="inputField">
+                            <h:selectOneRadio id="type" value="#{registerController.type}" unselectable="true">
+                                <f:selectItem itemLabel="Organisateur" itemValue="organisateur"/>
+                                <f:selectItem itemLabel="Participant" itemValue="participant"/>
+                            </h:selectOneRadio>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="pseudo">Pseudo</label></td>
+                        <td class="inputField">
+                            <h:inputText
+                                    size="31"
+                                    maxlength="45"
+                                    id="pseudo"
+                                    required="true"
+                                    requiredMessage="Vous devez rentrer un pseudo"
+                                    validatorMessage="Vous devez saisir un pseudo entre 5 et 15 caractères"
+                                    value="#{registerController.pseudo}" >
+                                <f:validateLength minimum="5" maximum="15"/>
+                                <f:ajax event="blur" render="nameErrorMsg"/>
+                            </h:inputText>
+                        </td>
+                        <td>
+                            <h:message id="nameErrorMsg" showSummary="true" showDetail="false" for="pseudo" class="error"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td class="inputField">
+                            <h:inputText
+                                    size="31"
+                                    maxlength="45"
+                                    id="email"
+                                    required="true"
+                                    requiredMessage="Veuillez saisir votre adresse mail"
+                                    value="#{registerController.mail}" >
+                                <f:ajax event="blur" render="emailErrorMsg"/>
+                            </h:inputText>
+                        </td>
+                        <td>
+                            <h:message id="emailErrorMsg" showSummary="true" showDetail="false" for="email" class="error"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Mot de passe</label></td>
+                        <td class="inputField">
+                            <h:inputSecret
+                                    size="31"
+                                    maxlength="19"
+                                    id="password"
+                                    value="#{registerController.motDePasse}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="confirm">Tapez à nouveau votre mot de passe</label></td>
+                        <td class="inputField">
+                            <h:inputSecret
+                                    size="31"
+                                    maxlength="19"
+                                    id="confirm"
+                                    value="#{registerController.confirm}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="inputField">
+                            <h:outputText
+                                    class="error"
+                                    id="errMsg"
+                                    value="#{registerController.errorMsg}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:commandButton  value="M'inscrire" action="#{registerController.inscription()}"/>
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
