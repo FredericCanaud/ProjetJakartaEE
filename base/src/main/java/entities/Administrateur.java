@@ -1,22 +1,11 @@
 package entities;
 
-import jakarta.persistence.*;
+public class Administrateur extends Utilisateur {
 
-@Entity
-@Table(name="ADMINISTRATEUR")
-public class Administrateur{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    public Administrateur(String pseudo, String mail, String mdp, String avatar, String role){
+        super(pseudo, mail, mdp, avatar, role);
+    }
+    public Administrateur(){
 
-    @Column(name = "pseudo")
-    private String pseudo;
-
-    @Column(name = "mail")
-    private String mail;
-
-    @Column(name = "mdp")
-    private String mdp;
-
-    public Administrateur(){}
+    }
 }

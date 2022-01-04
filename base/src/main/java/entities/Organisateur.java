@@ -1,26 +1,15 @@
 package entities;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
-public class Organisateur{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class Organisateur extends Utilisateur {
 
-    private String pseudo;
-    private String mail;
-    private String mdp;
+    public Organisateur(String pseudo, String mail, String mdp, String avatar, String role){
+        super(pseudo, mail, mdp, avatar, role);
+    }
 
-    public Organisateur(){}
+    public Organisateur(){
 
-    public Organisateur(long id, String pseudo, String mail, String mdp){
-        this.id = id;
-        this.pseudo = pseudo;
-        this.mail = mail;
-        this.mdp = mdp;
     }
 }

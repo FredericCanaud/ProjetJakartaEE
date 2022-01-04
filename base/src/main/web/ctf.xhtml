@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+    <ui:composition template="resources/header.xhtml">
+        <ui:define name="content">
+            <div>
+                <h:dataTable value="#{ctfController.derniersCTF}" var="ctf" border="1">
+                    <h:column>
+                        <f:facet name="header">Nom</f:facet>
+                        <a href="descriptionCTF.xhtml?#{ctf.ctfId}">#{ctf.nom}</a></h:column>
+                    <h:column>
+                        <f:facet name="header">Date de début</f:facet>
+                        #{ctf.dateDebut}, #{ctf.heureDebut}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Date de fin</f:facet>
+                        #{ctf.dateFin}, #{ctf.heureFin}
+                    </h:column>
+                </h:dataTable>
+            </div>
+            <div>
+                <h:dataTable rowIndexVar="row" value="#{equipeController.bestEquipes}" var="equipe" border="1">
+                    <h:column> #{"row + 1"} </h:column>
+                    <h:column> <a href="descriptionCTF.xhtml?#{equipe.equiId}">#{equipe.nom}</a></h:column>
+                    <h:column> #{equipe.scoreTotal}</h:column>
+                </h:dataTable>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -9,15 +9,30 @@
 <h:body>
     <ui:composition template="resources/header.xhtml" >
         <ui:define name="content">
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <table id="checkoutTable">
                     <tr>
-                        <td><label for="type">Vous êtes un :</label></td>
+                        <td><label for="role">Vous êtes un :</label></td>
                         <td class="inputField">
-                            <h:selectOneRadio id="type" value="#{registerController.type}" unselectable="true">
+                            <h:selectOneRadio id="role" value="#{connexionController.role}" unselectable="true">
                                 <f:selectItem itemLabel="Organisateur" itemValue="organisateur"/>
                                 <f:selectItem itemLabel="Participant" itemValue="participant"/>
                             </h:selectOneRadio>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="avatar">Avatar</label></td>
+                        <td class="inputField">
+                            <h:inputFile
+                                    id="avatar"
+                                    accept="image/*"
+                                    value="#{connexionController.avatar}"
+                                    required="false"
+                                    alt="Uploader un avatar">
+                            </h:inputFile>
+                        </td>
+                        <td>
+                            <h:message id="imageErrorMsg" showSummary="true" showDetail="false" for="pseudo" class="error"/>
                         </td>
                     </tr>
                     <tr>
@@ -30,7 +45,7 @@
                                     required="true"
                                     requiredMessage="Vous devez rentrer un pseudo"
                                     validatorMessage="Vous devez saisir un pseudo entre 5 et 15 caractères"
-                                    value="#{registerController.pseudo}" >
+                                    value="#{connexionController.pseudo}" >
                                 <f:validateLength minimum="5" maximum="15"/>
                                 <f:ajax event="blur" render="nameErrorMsg"/>
                             </h:inputText>
@@ -48,7 +63,7 @@
                                     id="email"
                                     required="true"
                                     requiredMessage="Veuillez saisir votre adresse mail"
-                                    value="#{registerController.mail}" >
+                                    value="#{connexionController.mail}" >
                                 <f:ajax event="blur" render="emailErrorMsg"/>
                             </h:inputText>
                         </td>
@@ -63,7 +78,7 @@
                                     size="31"
                                     maxlength="19"
                                     id="password"
-                                    value="#{registerController.motDePasse}" />
+                                    value="#{connexionController.motDePasse}" />
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +88,7 @@
                                     size="31"
                                     maxlength="19"
                                     id="confirm"
-                                    value="#{registerController.confirm}" />
+                                    value="#{connexionController.confirm}" />
                         </td>
                     </tr>
                     <tr>
@@ -82,12 +97,12 @@
                             <h:outputText
                                     class="error"
                                     id="errMsg"
-                                    value="#{registerController.errorMsg}" />
+                                    value="#{connexionController.errorMsg}" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <h:commandButton  value="M'inscrire" action="#{registerController.inscription()}"/>
+                            <h:commandButton  value="M'inscrire" action="#{connexionController.inscription()}"/>
                         </td>
                     </tr>
                 </table>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+    <ui:composition template="resources/header.xhtml" >
+        <ui:define name="content">
+            <h:form>
+                <table id="checkoutTable">
+                    <tr>
+                        <td><label for="role">Vous êtes un :</label></td>
+                        <td class="inputField">
+                            <h:selectOneRadio id="role" value="#{connexionController.role}" unselectable="true">
+                                <f:selectItem itemLabel="Organisateur" itemValue="organisateur"/>
+                                <f:selectItem itemLabel="Participant"  itemValue="participant"/>
+                                <f:selectItem itemLabel="Admin"        itemValue="admin"/>
+                            </h:selectOneRadio>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="mail">Email</label></td>
+                        <td class="inputField">
+                            <h:inputText
+                                    size="31"
+                                    maxlength="100"
+                                    id="mail"
+                                    required="true"
+                                    requiredMessage="Veuillez saisir votre adresse mail"
+                                    value="#{connexionController.mail}" >
+                                <f:ajax event="blur" render="emailErrorMsg"/>
+                            </h:inputText>
+                        </td>
+                        <td>
+                            <h:message id="emailErrorMsg" showSummary="true" showDetail="false" for="mail" class="error"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="motDePasse">Mot de passe</label></td>
+                        <td class="inputField">
+                            <h:inputSecret
+                                    size="31"
+                                    maxlength="19"
+                                    id="motDePasse"
+                                    value="#{connexionController.motDePasse}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="inputField">
+                            <h:outputText
+                                    class="error"
+                                    id="errMsg"
+                                    value="#{connexionController.errorMsg}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:commandButton  value="M'inscrire" action="#{connexionController.login()}"/>
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
