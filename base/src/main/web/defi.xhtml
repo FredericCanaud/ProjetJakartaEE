@@ -10,7 +10,7 @@
     <ui:composition template="resources/header.xhtml">
         <ui:define name="content">
             <div>
-                <h:dataTable value="#{defisController.getDefi(param['id'])}" var="defi">
+                <h:dataTable value="#{beanDefis.getDefi(param['id'])}" var="defi">
                     <h:column>
                         <p>#{defi.nom}</p>
                         <p>#{defi.sousTitre}</p>
@@ -18,6 +18,30 @@
                         <p>#{defi.validations} / #{defi.essais} réussites</p>
                     </h:column>
                 </h:dataTable>
+                <h:form>
+                    <p>Validation : Entrez le mot de passe </p>
+                    <h:inputSecret
+                            size="31"
+                            maxlength="100"
+                            id="mail"
+                            required="true"
+                            requiredMessage="Veuillez saisir le mot de passe correspondant"
+                            value="#{beanDefis.motDePasse}" >
+                        <f:ajax event="blur" render="emailErrorMsg"/>
+                    </h:inputSecret> <br/> <br/>
+                    <h:outputText
+                            class="error"
+                            id="errMsg"
+                            value="#{beanDefis.errorMsg}" />
+                    <h:outputText
+                            class="error"
+                            id="validMsg"
+                            value="#{beanDefis.validMsg}" />
+                    <h:commandButton  value="Valider" action="#{beanDefis.validerDefi}">
+                        <f:param name="defi_id" value="#{param['id']}"/>
+                        <f:param name="uti_id" value="#{beanConnexion.utilisateur.id}"/>
+                    </h:commandButton>
+                </h:form>
             </div>
         </ui:define>
     </ui:composition>

@@ -10,11 +10,11 @@
     <ui:composition template="resources/header.xhtml" >
         <ui:define name="content">
             <h:form>
-                <table id="checkoutTable">
+                <table id="loginTable">
                     <tr>
                         <td><label for="role">Vous êtes un :</label></td>
                         <td class="inputField">
-                            <h:selectOneRadio id="role" value="#{connexionController.role}" unselectable="true">
+                            <h:selectOneRadio id="role" value="#{beanConnexion.role}" unselectable="true">
                                 <f:selectItem itemLabel="Organisateur" itemValue="organisateur"/>
                                 <f:selectItem itemLabel="Participant"  itemValue="participant"/>
                                 <f:selectItem itemLabel="Admin"        itemValue="admin"/>
@@ -30,7 +30,7 @@
                                     id="mail"
                                     required="true"
                                     requiredMessage="Veuillez saisir votre adresse mail"
-                                    value="#{connexionController.mail}" >
+                                    value="#{beanConnexion.mail}" >
                                 <f:ajax event="blur" render="emailErrorMsg"/>
                             </h:inputText>
                         </td>
@@ -45,7 +45,7 @@
                                     size="31"
                                     maxlength="19"
                                     id="motDePasse"
-                                    value="#{connexionController.motDePasse}" />
+                                    value="#{beanConnexion.motDePasse}" />
                         </td>
                     </tr>
                     <tr>
@@ -54,12 +54,12 @@
                             <h:outputText
                                     class="error"
                                     id="errMsg"
-                                    value="#{connexionController.errorMsg}" />
+                                    value="#{beanConnexion.errorMsg}" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <h:commandButton  value="M'inscrire" action="#{connexionController.login()}"/>
+                            <h:commandButton  value="M'inscrire" action="#{beanConnexion.login()}"/>
                         </td>
                     </tr>
                 </table>

@@ -27,6 +27,8 @@ public class Utilisateur {
     @Column(name = "role")
     private String role;
 
+    private int score;
+
     public Utilisateur(String pseudo, String mail, String mdp, String avatar, String role){
         this.pseudo = pseudo;
         this.mail = mail;
@@ -36,6 +38,14 @@ public class Utilisateur {
     }
 
     public Utilisateur() { }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPseudo() {
         return pseudo;
@@ -75,5 +85,13 @@ public class Utilisateur {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

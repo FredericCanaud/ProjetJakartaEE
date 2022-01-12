@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition template="resources/header.xhtml">
+        <ui:define name="content">
+            <div>
+                <center>
+                    <h2>Discussion</h2>
+                    <h:dataTable
+                            value="#{beanDiscussions.getDiscussions(param['id'], beanConnexion.utilisateur.id)}"
+                            var="discussion" style="width: 90%">
+                        <h:column>
+                            #{beanUtilisateurs.getPseudoFromMembre(discussion.utiIdExp)}
+                        </h:column>
+                        <h:column>
+                            #{discussion.date} à #{discussion.heure}
+                        </h:column>
+                        <h:column>
+                            #{discussion.message}
+                        </h:column>
+                    </h:dataTable>
+                    <h3>Envoyer un message</h3>
+                    <h:form>
+                        <table id="discussionTable">
+                            <tr>
+                                <td class="inputField">
+                                    <h:inputTextarea
+                                            id = "message"
+                                            row = "20"
+                                            col = "50"
+                                            required="true"
+                                            requiredMessage="Veuillez saisir votre adresse mail"
+                                            value="#{beanDiscussions.message}" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <h:commandButton type="submit" value="Poster mon message" action="#{beanDiscussions.posterMessage}">
+                                        <f:param name="ctf_id" value="#{param['id']}" />
+                                        <f:param name="uti_id" value="#{beanConnexion.utilisateur.id}" />
+                                    </h:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
+                </center>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

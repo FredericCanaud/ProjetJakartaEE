@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition template="resources/header.xhtml">
+        <ui:define name="content">
+            <div>
+                <center>
+                    <h:dataTable value="#{beanCTF.getCTF(param['id'])}" var="ctf">
+                        <h:column>
+                            <center>
+                                <h1>
+                                    #{ctf.nom}
+                                </h1>
+                            </center>
+                            <h3>
+                                Du #{ctf.dateDebut} à #{ctf.heureDebut} au #{ctf.dateFin} à #{ctf.heureFin}
+                            </h3>
+                            <p>
+                                Format : #{ctf.format}
+                            </p>
+                            URL : <a href="#{ctf.url}">#{ctf.url}</a>
+                        </h:column>
+                    </h:dataTable>
+                    <h2>Commentaires </h2>
+                    <h:dataTable value="#{beanCTF.getCommentairesFromCTF(param['id'])}" var="commentaire" border="1">
+                        <h:column>
+                                <b>
+                                    #{beanUtilisateurs.getUtilisateur(commentaire.utiId).pseudo}
+                                </b>
+                                <p>
+                                    #{beanUtilisateurs.getUtilisateur(commentaire.utiId).role}
+                                </p>
+                                <p>
+                                    #{commentaire.date}
+                                </p>
+                        </h:column>
+                        <h:column>
+                            <b>
+                                #{commentaire.message}
+                            </b>
+                        </h:column>
+                    </h:dataTable>
+                    <h3>Poster un commentaire </h3>
+                    <h:form>
+                            <table id="commentaireTable">
+                                <tr>
+                                    <td class="inputField">
+                                        <h:inputTextarea
+                                                id = "message"
+                                                row = "20"
+                                                col = "50"
+                                                required="true"
+                                                requiredMessage="Veuillez saisir votre adresse mail"
+                                                value="#{beanCTF.message}" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <h:commandButton type="submit" value="Poster mon message" action="#{beanUtilisateurs.posterCommentaire}">
+                                            <f:param name="ctf_id" value="#{param['id']}" />
+                                            <f:param name="uti_id" value="#{beanConnexion.utilisateur.id}" />
+                                            <f:param name="message" value="#{beanCTF.message}" />
+                                        </h:commandButton>
+                                        <p:commandButton value="Poster mon message" oncomplete="#{beanUtilisateurs.posterCommentaire(param['id'], beanConnexion.utilisateur.id, beanCTF.message)}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                    </h:form>
+                </center>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

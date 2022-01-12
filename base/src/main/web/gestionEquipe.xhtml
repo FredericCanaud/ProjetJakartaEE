@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:composition template="resources/header.xhtml">
+        <ui:define name="content">
+            <div>
+                <center>
+                    <h:dataTable value="#{beanEquipes.getEquipe(param['id'])}" var="equipe">
+                        <h:column>
+                            <center>
+                                <h1>
+                                    #{equipe.nom}
+                                </h1>
+                                <b> Score sur l'ensemble des CTF : </b> #{equipe.scoreTotal}
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                    <h2> Liste des membres </h2>
+                    <h:dataTable value="#{beanUtilisateurs.getMembresEquipe(param['id'])}" var="participant" border="1">
+                        <h:column>
+                            <center>
+                                <b>
+                                    <a href="equipe.xhtml?id=#{participant.id}">#{participant.pseudo}</a>
+                                </b>
+                            </center>
+                        </h:column>
+                    </h:dataTable>
+                    <h2> Liste des CTF auxquels a participé cette équipe </h2>
+                    <h:dataTable value="#{beanCTF.getCTFFromEquipe(param['id'])}" var="ctf" border="1">
+                        <h:column>
+                            <f:facet name="header">Nom</f:facet>
+                            <a href="descriptionCTF.xhtml?id=#{ctf.ctfId}">#{ctf.nom}</a></h:column>
+                        <h:column>
+                            <f:facet name="header">Date de début</f:facet>
+                            #{ctf.dateDebut}, #{ctf.heureDebut}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Date de fin</f:facet>
+                            #{ctf.dateFin}, #{ctf.heureFin}
+                        </h:column>
+                    </h:dataTable>
+                </center>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

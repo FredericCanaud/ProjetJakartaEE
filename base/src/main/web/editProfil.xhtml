@@ -9,86 +9,78 @@
 <h:body>
     <ui:composition template="resources/header.xhtml" >
         <ui:define name="content">
+            <h2>Éditer mon profil</h2>
             <h:form enctype="multipart/form-data">
                 <table id="checkoutTable">
-                    <tr>
-                        <td><label for="role">Vous êtes un :</label></td>
-                        <td class="inputField">
-                            <h:selectOneRadio id="role" value="#{beanConnexion.role}" unselectable="true">
-                                <f:selectItem itemLabel="Organisateur" itemValue="organisateur"/>
-                                <f:selectItem itemLabel="Participant" itemValue="participant"/>
-                            </h:selectOneRadio>
-                        </td>
-                    </tr>
                     <tr>
                         <td><label for="avatar">Avatar</label></td>
                         <td class="inputField">
                             <h:inputFile
                                     id="avatar"
                                     accept="image/*"
-                                    value="#{beanConnexion.avatar}"
+                                    value="#{beanParticipants.avatar}"
                                     required="false"
                                     alt="Uploader un avatar">
                             </h:inputFile>
                         </td>
                         <td>
-                            <h:message id="imageErrorMsg" showSummary="true" showDetail="false" for="pseudo" class="error"/>
+                            <h:message id="imageErrorMsg" showSummary="true" showDetail="false" for="avatar" class="error"/>
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="pseudo">Pseudo</label></td>
+                        <td><label for="mail">Email</label></td>
                         <td class="inputField">
                             <h:inputText
                                     size="31"
                                     maxlength="45"
-                                    id="pseudo"
-                                    required="true"
-                                    requiredMessage="Vous devez rentrer un pseudo"
-                                    validatorMessage="Vous devez saisir un pseudo entre 5 et 15 caractères"
-                                    value="#{beanConnexion.pseudo}" >
-                                <f:validateLength minimum="5" maximum="15"/>
-                                <f:ajax event="blur" render="nameErrorMsg"/>
-                            </h:inputText>
-                        </td>
-                        <td>
-                            <h:message id="nameErrorMsg" showSummary="true" showDetail="false" for="pseudo" class="error"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="email">Email</label></td>
-                        <td class="inputField">
-                            <h:inputText
-                                    size="31"
-                                    maxlength="45"
-                                    id="email"
+                                    id="mail"
                                     required="true"
                                     requiredMessage="Veuillez saisir votre adresse mail"
-                                    value="#{beanConnexion.mail}" >
+                                    value="#{beanParticipants.mail}" >
                                 <f:ajax event="blur" render="emailErrorMsg"/>
                             </h:inputText>
                         </td>
                         <td>
-                            <h:message id="emailErrorMsg" showSummary="true" showDetail="false" for="email" class="error"/>
+                            <h:message id="emailErrorMsg" showSummary="true" showDetail="false" for="mail" class="error"/>
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="password">Mot de passe</label></td>
+                        <td><label for="mdp">Ancien mot de passe</label></td>
                         <td class="inputField">
                             <h:inputSecret
                                     size="31"
                                     maxlength="19"
-                                    id="password"
-                                    value="#{beanConnexion.motDePasse}" />
+                                    id="mdp"
+                                    required="true"
+                                    value="#{beanParticipants.mdp}" />
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="confirm">Tapez à nouveau votre mot de passe</label></td>
+                        <td>
+                            <h4>Vous pouvez changer votre mot de</h4>
+                        </td>
+                        <td>
+                            <h4> passe si vous le souhaitez</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="newMdp">Tapez votre nouveau mot de passe</label></td>
                         <td class="inputField">
                             <h:inputSecret
                                     size="31"
                                     maxlength="19"
-                                    id="confirm"
-                                    value="#{beanConnexion.confirm}" />
+                                    id="newMdp"
+                                    value="#{beanParticipants.newMdp}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="newMdpConfirm">Tapez à nouveau votre mot de passe</label></td>
+                        <td class="inputField">
+                            <h:inputSecret
+                                    size="31"
+                                    maxlength="19"
+                                    id="newMdpConfirm"
+                                    value="#{beanParticipants.newMdpConfirm}" />
                         </td>
                     </tr>
                     <tr>
@@ -97,12 +89,14 @@
                             <h:outputText
                                     class="error"
                                     id="errMsg"
-                                    value="#{beanConnexion.errorMsg}" />
+                                    value="#{beanParticipants.errorMsg}" />
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <h:commandButton  value="M'inscrire" action="#{beanConnexion.inscription()}"/>
+                            <h:commandButton value="Modifier" action="#{beanParticipants.editParticipant}">
+                               <f:param name="uti_id" value="#{beanConnexion.utilisateur.id}"/>
+                            </h:commandButton>
                         </td>
                     </tr>
                 </table>

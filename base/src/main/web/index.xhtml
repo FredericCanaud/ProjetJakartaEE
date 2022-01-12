@@ -6,12 +6,30 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:body>
-   <ui:composition template="resources/template.xhtml" >
-   <ui:define name="content">
-      <f:view>
-         <h:outputLabel value="Hello, world"/>
-      </f:view>
-   </ui:define>
+   <ui:composition template="resources/header.xhtml">
+      <ui:define name="content">
+         <div>
+            <center>
+               <h2>Classement général</h2>
+               <h:dataTable value="#{beanUtilisateurs.classementGeneral}" var="utilisateur" border="1" style="text-align: center">
+                  <h:column>
+                     <f:facet name="header">Pseudo</f:facet>
+                     #{utilisateur.pseudo}
+                  </h:column>
+                  <h:column>
+                     <f:facet name="header">Score</f:facet>
+                     #{utilisateur.score}
+                  </h:column>
+                  <h:column>
+                     <f:facet name="header">Discuter avec cette personne</f:facet>
+                     <h:form>
+                        <h:link value="Discuter" outcome="discussion.xhtml?id=#{utilisateur.id}"/>
+                     </h:form>
+                  </h:column>
+               </h:dataTable>
+            </center>
+         </div>
+      </ui:define>
    </ui:composition>
 </h:body>
 

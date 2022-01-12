@@ -31,6 +31,12 @@ public class CTF {
     @Column(name="orga_id")
     private int orgaId;
 
+    @Column(name="format")
+    private String format;
+
+    @Column(name="url")
+    private String url;
+
     public int getCtfId() {
         return ctfId;
     }
@@ -93,5 +99,21 @@ public class CTF {
 
     public void setOrgaId(int orgaId) {
         this.orgaId = orgaId;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

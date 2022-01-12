@@ -70,6 +70,11 @@ CREATE TABLE commentaire(
     message VARCHAR(500) NOT NULL
 );
 
+CREATE TABLE role(
+    ctf_id INT NOT NULL,
+    role VARCHAR(15) NOT NULL
+);
+
 INSERT INTO defi VALUES(DEFAULT, 1, 1, 'Hidden HTML', 'Un petit peu de HTML bien caché', 'Ce formulaire est désactivé et ne peut pas être utilisé. À vous de trouver le moyen de l’utiliser tout de même.', 32, 100, 'Voilà le flag');
 INSERT INTO defi VALUES(DEFAULT, 5, 2, 'FTP - Authentification', 'Analyse de capture réseau', 'Un échange authentifié de fichier réalisé grâce au protocole FTP. Retrouvez le mot de passe utilisé par l’utilisateur.', 29, 200, 'Voilà le flag');
 INSERT INTO defi VALUES(DEFAULT, 10, 2, 'ETHERNET - trame', 'Analyse de trame', 'Retrouvez les données normalement confidentielles contenues dans cette trame.', 25, 120, 'Voilà le flag');
@@ -79,6 +84,160 @@ INSERT INTO defi VALUES(DEFAULT, 5, 3, 'Hash - Message Digest 5', 'Hash - Messag
 INSERT INTO defi VALUES(DEFAULT, 5, 4, 'Gunnm', 'Une image pour commencer', 'Une image pour commencer', 5, 50, 'Voilà le flag');
 INSERT INTO defi VALUES(DEFAULT, 5, 4, 'Point à la ligne', 'Point à la ligne', '“Rien de trop est un point dont on parle sans cesse et qu’on n’observe point.”', 7, 100, 'Voilà le flag');
 INSERT INTO defi VALUES(DEFAULT, 5, 4, 'We need to go deeper', 'Poupées Russes', 'Poupées Russes', 12, 400, 'Voilà le flag');
+
+INSERT INTO valide VALUES (102, 1);
+INSERT INTO valide VALUES (104, 1);
+INSERT INTO valide VALUES (106, 1);
+INSERT INTO valide VALUES (108, 1);
+INSERT INTO valide VALUES (110, 1);
+INSERT INTO valide VALUES (112, 1);
+INSERT INTO valide VALUES (114, 1);
+INSERT INTO valide VALUES (116, 1);
+INSERT INTO valide VALUES (118, 1);
+INSERT INTO valide VALUES (120, 1);
+INSERT INTO valide VALUES (122, 1);
+INSERT INTO valide VALUES (124, 1);
+INSERT INTO valide VALUES (126, 1);
+INSERT INTO valide VALUES (128, 1);
+INSERT INTO valide VALUES (130, 1);
+INSERT INTO valide VALUES (132, 1);
+
+INSERT INTO valide VALUES (101, 2);
+INSERT INTO valide VALUES (103, 2);
+INSERT INTO valide VALUES (105, 2);
+INSERT INTO valide VALUES (107, 2);
+INSERT INTO valide VALUES (109, 2);
+INSERT INTO valide VALUES (111, 2);
+INSERT INTO valide VALUES (113, 2);
+INSERT INTO valide VALUES (115, 2);
+INSERT INTO valide VALUES (117, 2);
+INSERT INTO valide VALUES (119, 2);
+INSERT INTO valide VALUES (121, 2);
+INSERT INTO valide VALUES (123, 2);
+INSERT INTO valide VALUES (125, 2);
+INSERT INTO valide VALUES (127, 2);
+INSERT INTO valide VALUES (129, 2);
+INSERT INTO valide VALUES (131, 2);
+
+INSERT INTO valide VALUES (102, 3);
+INSERT INTO valide VALUES (104, 3);
+INSERT INTO valide VALUES (106, 3);
+INSERT INTO valide VALUES (108, 3);
+INSERT INTO valide VALUES (110, 3);
+INSERT INTO valide VALUES (112, 3);
+INSERT INTO valide VALUES (114, 3);
+INSERT INTO valide VALUES (116, 3);
+INSERT INTO valide VALUES (118, 3);
+INSERT INTO valide VALUES (120, 3);
+INSERT INTO valide VALUES (122, 3);
+INSERT INTO valide VALUES (124, 3);
+INSERT INTO valide VALUES (126, 3);
+INSERT INTO valide VALUES (128, 3);
+INSERT INTO valide VALUES (130, 3);
+INSERT INTO valide VALUES (132, 3);
+
+INSERT INTO valide VALUES (101, 4);
+INSERT INTO valide VALUES (103, 4);
+INSERT INTO valide VALUES (105, 4);
+INSERT INTO valide VALUES (107, 4);
+INSERT INTO valide VALUES (109, 4);
+INSERT INTO valide VALUES (111, 4);
+INSERT INTO valide VALUES (113, 4);
+INSERT INTO valide VALUES (115, 4);
+INSERT INTO valide VALUES (117, 4);
+INSERT INTO valide VALUES (119, 4);
+INSERT INTO valide VALUES (121, 4);
+INSERT INTO valide VALUES (123, 4);
+INSERT INTO valide VALUES (125, 4);
+INSERT INTO valide VALUES (127, 4);
+INSERT INTO valide VALUES (129, 4);
+INSERT INTO valide VALUES (131, 4);
+
+INSERT INTO valide VALUES (102, 5);
+INSERT INTO valide VALUES (104, 5);
+INSERT INTO valide VALUES (106, 5);
+INSERT INTO valide VALUES (108, 5);
+INSERT INTO valide VALUES (109, 5);
+INSERT INTO valide VALUES (110, 5);
+INSERT INTO valide VALUES (112, 5);
+INSERT INTO valide VALUES (114, 5);
+INSERT INTO valide VALUES (116, 5);
+INSERT INTO valide VALUES (118, 5);
+INSERT INTO valide VALUES (120, 5);
+INSERT INTO valide VALUES (122, 5);
+INSERT INTO valide VALUES (124, 5);
+INSERT INTO valide VALUES (126, 5);
+INSERT INTO valide VALUES (128, 5);
+INSERT INTO valide VALUES (130, 5);
+INSERT INTO valide VALUES (132, 5);
+
+INSERT INTO valide VALUES (101, 6);
+INSERT INTO valide VALUES (103, 6);
+INSERT INTO valide VALUES (105, 6);
+INSERT INTO valide VALUES (107, 6);
+INSERT INTO valide VALUES (109, 6);
+INSERT INTO valide VALUES (111, 6);
+INSERT INTO valide VALUES (113, 6);
+INSERT INTO valide VALUES (115, 6);
+INSERT INTO valide VALUES (117, 6);
+INSERT INTO valide VALUES (119, 6);
+INSERT INTO valide VALUES (121, 6);
+INSERT INTO valide VALUES (123, 6);
+INSERT INTO valide VALUES (125, 6);
+INSERT INTO valide VALUES (127, 6);
+INSERT INTO valide VALUES (129, 6);
+INSERT INTO valide VALUES (131, 6);
+
+INSERT INTO valide VALUES (102, 7);
+INSERT INTO valide VALUES (104, 7);
+INSERT INTO valide VALUES (106, 7);
+INSERT INTO valide VALUES (108, 7);
+INSERT INTO valide VALUES (110, 7);
+INSERT INTO valide VALUES (112, 7);
+INSERT INTO valide VALUES (114, 7);
+INSERT INTO valide VALUES (116, 7);
+INSERT INTO valide VALUES (118, 7);
+INSERT INTO valide VALUES (120, 7);
+INSERT INTO valide VALUES (122, 7);
+INSERT INTO valide VALUES (124, 7);
+INSERT INTO valide VALUES (126, 7);
+INSERT INTO valide VALUES (128, 7);
+INSERT INTO valide VALUES (130, 7);
+INSERT INTO valide VALUES (132, 7);
+
+INSERT INTO valide VALUES (101, 8);
+INSERT INTO valide VALUES (103, 8);
+INSERT INTO valide VALUES (105, 8);
+INSERT INTO valide VALUES (107, 8);
+INSERT INTO valide VALUES (109, 8);
+INSERT INTO valide VALUES (111, 8);
+INSERT INTO valide VALUES (113, 8);
+INSERT INTO valide VALUES (115, 8);
+INSERT INTO valide VALUES (117, 8);
+INSERT INTO valide VALUES (119, 8);
+INSERT INTO valide VALUES (121, 8);
+INSERT INTO valide VALUES (123, 8);
+INSERT INTO valide VALUES (125, 8);
+INSERT INTO valide VALUES (127, 8);
+INSERT INTO valide VALUES (129, 8);
+INSERT INTO valide VALUES (131, 8);
+
+INSERT INTO valide VALUES (102, 9);
+INSERT INTO valide VALUES (104, 9);
+INSERT INTO valide VALUES (106, 9);
+INSERT INTO valide VALUES (108, 9);
+INSERT INTO valide VALUES (110, 9);
+INSERT INTO valide VALUES (112, 9);
+INSERT INTO valide VALUES (114, 9);
+INSERT INTO valide VALUES (116, 9);
+INSERT INTO valide VALUES (118, 9);
+INSERT INTO valide VALUES (120, 9);
+INSERT INTO valide VALUES (122, 9);
+INSERT INTO valide VALUES (124, 9);
+INSERT INTO valide VALUES (126, 9);
+INSERT INTO valide VALUES (128, 9);
+INSERT INTO valide VALUES (130, 9);
+INSERT INTO valide VALUES (132, 9);
 
 INSERT INTO utilisateur VALUES (DEFAULT, 'NicolasAragon', 'nicolas.jpg', 'nico.aragon87100@gmail.com', 'IyhR7ksEehYTcBDDd8hFjq7HJHjOw1iLOUEPFm5ix38=','admin');
 INSERT INTO utilisateur VALUES (DEFAULT, 'freddy', 'avatar.jpg', 'frederic-9@hotmail.fr', 'qrghe44I1qSXgesETKH/eCuP4yFjslswobQWBF/ECWE=','admin');
@@ -111,6 +270,38 @@ INSERT INTO utilisateur VALUES (DEFAULT, 'albert', 'avatar.jpg', '4lb3rtthomasei
 INSERT INTO utilisateur VALUES (DEFAULT, 'mimie', 'avatar.jpg', 'mimimimi-mathy85@hotmail.fr', 'ygZZ5g0PZY/rCzpK8okn998r9YI1Brvom3sPVS8CRVc=','participant');
 INSERT INTO utilisateur VALUES (DEFAULT, 'patrick', 'avatar.jpg', 'patoche-sebastoche23@hotmail.fr', 'yQRr6pgv56fRxUiTIfb3PTyiMo+KQiG/BTHfqer4W6I=','participant');
 INSERT INTO utilisateur VALUES (DEFAULT, 'linux', 'avatar.jpg', 'torvalds44523@hotmail.fr', 'WNXDD5Hpb31OCi11W/jjy1kstqsGx6lXXx0p1buUrLY=','participant');
+
+INSERT INTO role values (102, 'admin');
+INSERT INTO role values (103, 'admin');
+INSERT INTO role values (104, 'admin');
+INSERT INTO role values (105, 'participant');
+INSERT INTO role values (106, 'admin');
+INSERT INTO role values (107, 'organisateur');
+INSERT INTO role values (108, 'participant');
+INSERT INTO role values (109, 'participant' );
+INSERT INTO role values (110, 'participant');
+INSERT INTO role values (111, 'participant');
+INSERT INTO role values (112, 'participant');
+INSERT INTO role values (113, 'participant');
+INSERT INTO role values (114, 'participant');
+INSERT INTO role values (115, 'participant');
+INSERT INTO role values (116, 'organisateur');
+INSERT INTO role values (117, 'participant');
+INSERT INTO role values (118, 'participant');
+INSERT INTO role values (119, 'organisateur');
+INSERT INTO role values (120, 'participant');
+INSERT INTO role values (121, 'participant');
+INSERT INTO role values (122, 'participant');
+INSERT INTO role values (123, 'participant');
+INSERT INTO role values (124, 'participant');
+INSERT INTO role values (125, 'participant');
+INSERT INTO role values (126, 'participant');
+INSERT INTO role values (127, 'participant');
+INSERT INTO role values (128, 'participant');
+INSERT INTO role values (129, 'participant');
+INSERT INTO role values (130, 'participant');
+INSERT INTO role values (131, 'participant');
+INSERT INTO role values (132, 'participant');
 
 INSERT INTO equipe VALUES (DEFAULT, 1, 'Les profs', 'equipe.jpg');
 INSERT INTO equipe VALUES (DEFAULT, 114, 'Gouvernement', 'equipe.jpg');
@@ -172,3 +363,27 @@ INSERT INTO scoreCTF VALUES(5, 5, 40);
 
 SELECT * FROM CTF ORDER BY dateDebut DESC, heureDebut DESC FETCH FIRST 3 ROWS ONLY;
 SELECT e.equi_id, chef_id, nom, avatar, SUM(score) AS scoreTotal FROM equipe e JOIN scoreCTF ON e.equi_id = scoreCTF.equi_id GROUP BY e.equi_id, chef_id, nom, avatar ORDER BY scoreTotal DESC;
+SELECT u.pseudo, COALESCE(SUM(s.score),0)+COALESCE(SUM(d.points),0) AS scoreTotal FROM utilisateur u
+    LEFT JOIN appartientA a on u.uti_id = a.uti_id
+    LEFT JOIN scoreCTF s on a.equi_id = s.equi_id
+    LEFT JOIN valide ON valide.uti_id = u.uti_id
+    LEFT JOIN defi d on valide.defi_id = d.defi_id
+    GROUP BY pseudo
+    ORDER BY scoreTotal DESC;
+SELECT u.pseudo, COALESCE(SUM(s.score),0)+COALESCE(SUM(d.points),0) AS scoreTotal FROM utilisateur u
+    LEFT JOIN appartientA a on u.uti_id = a.uti_id
+    LEFT JOIN scoreCTF s on a.equi_id = s.equi_id
+    LEFT JOIN valide ON valide.uti_id = u.uti_id
+    LEFT JOIN defi d on valide.defi_id = d.defi_id
+    WHERE u.uti_id = 103
+    GROUP BY pseudo
+    ORDER BY scoreTotal DESC;
+
+SELECT * FROM commentaire WHERE ctf_id = 1 ORDER BY date;
+SELECT * FROM utilisateur WHERE uti_id = 111;
+
+SELECT u.uti_id, u.pseudo FROM utilisateur u JOIN appartientA a ON u.uti_id = a.uti_id AND equi_id = 2;
+SELECT * FROM equipe WHERE chef_id = 125;
+
+UPDATE CTF SET ctf.VALIDE = true WHERE ctf_id = 6;
+SELECT * FROM discussion WHERE (UTI_ID_DEST = 102 AND UTI_ID_EXP = 103) OR (UTI_ID_DEST = 103 AND UTI_ID_EXP = 102) ORDER BY date, heure;

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+    <ui:composition template="resources/header.xhtml">
+        <ui:define name="content">
+            <div>
+                <center>
+                    <h2>Mes CTF</h2>
+                    <h:dataTable value="#{beanCTF.getCTFFromOrganisateur(beanConnexion.utilisateur.id)}" var="ctf" border="1" style="text-align: center">
+                        <h:column>
+                            <f:facet name="header">Nom</f:facet>
+                            <a href="descriptionCTF.xhtml?id=#{ctf.ctfId}">#{ctf.nom}</a></h:column>
+                        <h:column>
+                            <f:facet name="header">Date de début</f:facet>
+                            #{ctf.dateDebut}, #{ctf.heureDebut}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Date de fin</f:facet>
+                            #{ctf.dateFin}, #{ctf.heureFin}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Supprimer le CTF</f:facet>
+                            <h:form>
+                                <h:commandButton value="Bannir" action="#{beanOrganisateurs.supprimerCTF(ctf.ctfId)}"/>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+                    <h2>Créer un nouveau CTF</h2>
+                    <h4>Lorsque vous créez un nouveau CTF, ce dernier doit être validé par un administrateur :)</h4>
+                    <h:form enctype="multipart/form-data">
+                        <table id="checkoutTable">
+                            <tr>
+                                <td><label for="nom">Nom</label></td>
+                                <td class="inputField">
+                                    <h:inputText
+                                            size="31"
+                                            id="nom"
+                                            required="true"
+                                            requiredMessage="Vous devez rentrer un nom"
+                                            value="#{beanOrganisateurs.nom}" >
+                                    </h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="image">Image</label></td>
+                                <td class="inputField">
+                                    <h:inputFile
+                                            id="image"
+                                            accept="image/*"
+                                            value="#{beanOrganisateurs.image}"
+                                            required="false"
+                                            alt="Uploader une image">
+                                    </h:inputFile>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="dateDebut">Date début</label></td>
+                                <td class="inputField">
+                                    <h:inputText
+                                            id="dateDebut"
+                                            required="true"
+                                            requiredMessage="Veuillez saisir la date de début"
+                                            value="#{beanOrganisateurs.dateDebut}" >
+                                    </h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="heureDebut">Date début</label></td>
+                                <td class="inputField">
+                                    <h:inputText
+                                            id="heureDebut"
+                                            required="true"
+                                            requiredMessage="Veuillez saisir l'heure de début"
+                                            value="#{beanOrganisateurs.heureDebut}" >
+                                    </h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="dateFin">Date fin</label></td>
+                                <td class="inputField">
+                                    <h:inputText
+                                            id="dateFin"
+                                            required="true"
+                                            requiredMessage="Veuillez saisir la date de fin"
+                                            value="#{beanOrganisateurs.dateFin}" >
+                                    </h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="format">Format</label></td>
+                                <td class="inputField">
+                                    <h:inputText
+                                            id="format"
+                                            required="true"
+                                            requiredMessage="Veuillez saisir le format de l'événément"
+                                            value="#{beanOrganisateurs.format}" >
+                                    </h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="heureFin">Heure fin</label></td>
+                                <td class="inputField">
+                                    <h:inputText
+                                            id="heureFin"
+                                            required="true"
+                                            requiredMessage="Veuillez saisir l'URL de l'événement"
+                                            value="#{beanOrganisateurs.heureFin}" >
+                                    </h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h:commandButton  value="Créer le CTF" action="#{beanOrganisateurs.creerCTF}">
+                                        <f:param id="orga_id" value="#{beanConnexion.utilisateur.id}"/>
+                                    </h:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
+                </center>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -10,26 +10,31 @@
     <ui:composition template="resources/header.xhtml">
         <ui:define name="content">
             <div>
-                <h:dataTable value="#{ctfController.derniersCTF}" var="ctf" border="1">
-                    <h:column>
-                        <f:facet name="header">Nom</f:facet>
-                        <a href="descriptionCTF.xhtml?#{ctf.ctfId}">#{ctf.nom}</a></h:column>
-                    <h:column>
-                        <f:facet name="header">Date de début</f:facet>
-                        #{ctf.dateDebut}, #{ctf.heureDebut}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Date de fin</f:facet>
-                        #{ctf.dateFin}, #{ctf.heureFin}
-                    </h:column>
-                </h:dataTable>
+                <center>
+                    <h2>Les derniers CTF </h2>
+                    <h:dataTable value="#{beanCTF.derniersCTF}" var="ctf" border="1">
+                        <h:column>
+                            <f:facet name="header">Nom</f:facet>
+                            <a href="descriptionCTF.xhtml?id=#{ctf.ctfId}">#{ctf.nom}</a></h:column>
+                        <h:column>
+                            <f:facet name="header">Date de début</f:facet>
+                            #{ctf.dateDebut}, #{ctf.heureDebut}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Date de fin</f:facet>
+                            #{ctf.dateFin}, #{ctf.heureFin}
+                        </h:column>
+                    </h:dataTable>
+                </center>
             </div>
             <div>
-                <h:dataTable rowIndexVar="row" value="#{equipeController.bestEquipes}" var="equipe" border="1">
-                    <h:column> #{"row + 1"} </h:column>
-                    <h:column> <a href="descriptionCTF.xhtml?#{equipe.equiId}">#{equipe.nom}</a></h:column>
-                    <h:column> #{equipe.scoreTotal}</h:column>
-                </h:dataTable>
+                <center>
+                    <h2>Les meilleurs équipes aux CTF</h2>
+                    <h:dataTable rowIndexVar="row" value="#{beanEquipes.bestEquipes}" var="equipe" border="1">
+                        <h:column> <a href="equipe.xhtml?id=#{equipe.equiId}">#{equipe.nom}</a></h:column>
+                        <h:column> #{equipe.scoreTotal}</h:column>
+                    </h:dataTable>
+                </center>
             </div>
         </ui:define>
     </ui:composition>

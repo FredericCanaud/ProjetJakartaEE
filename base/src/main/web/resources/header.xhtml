@@ -4,38 +4,65 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <LINK REL="SHORTCUT ICON" HREF="/img/favicon.ico"/>
 
-  <title>Leucé-thé-effe</title>
+  <title>Root My Cryptis</title>
 </h:head>
 <h:body>
   <!-- Wrapper -->
+    <div id="header">
+        <h1 id="logo" style=" display: flex; justify-content: center">Root My Cryptis, la plateforme magnitifique</h1>
+    </div>
   <div id="wrapper">
         <!-- Header -->
-        <div id="header">
-          <h1 id="logo">Root me, la plateforme magnitifique</h1>
+        <div style="display: inline-flex; width:100%; justify-content: space-between;">
+            <div id="menu">
+                <ul> Challenges
+                    <li><a href="defis.xhtml?type=1">Web</a></li>
+                    <li><a href="defis.xhtml?type=2">Réseau</a></li>
+                    <li><a href="defis.xhtml?type=3">Cryptographie</a></li>
+                    <li><a href="defis.xhtml?type=4">Stéganographie</a></li>
+                    <li><a href="defis.xhtml?type=5">Forensic</a></li>
+                    <li><a href="defis.xhtml?type=6">Programmation</a></li>
+                </ul>
+            </div>
+            <div id="CTF">
+                <a href="ctf.xhtml">CTF</a>
+            </div>
+            <c:set var="estChef" value="#{beanConnexion.estChef()}"/>
+
+            <c:if test="${estChef}}">
+                <div id="gestionEquipe">
+                    <a href="gestionEquipe.xhtml">Mon équipe</a>
+                </div>
+            </c:if>
+
+            <div id="classement">
+                <a href="index.xhtml">Classement général</a>
+            </div>
+            <div id="connexion">
+                <c:set var="user" value="#{beanConnexion.utilisateur}"/>
+                <c:if test="${empty user}">
+                    <h:outputLink value="connexion.xhtml">Se connecter</h:outputLink>
+                </c:if>
+                <c:otherwise>
+                    <h:outputLink value="profil.xhtml">#{beanConnexion.utilisateur.pseudo}</h:outputLink>
+                </c:otherwise>
+                <c:if test="${!empty user}">
+                    <h:form>
+                        <h:commandLink action="#{beanConnexion.deconnexion()}">Déconnexion</h:commandLink>
+                    </h:form>
+                </c:if>
+            </div>
         </div>
-        <div id="menu">
-            <ul> Challenges
-                <li><a href="defis.xhtml?type=1">Web</a></li>
-                <li><a href="defis.xhtml?type=2">Réseau</a></li>
-                <li><a href="defis.xhtml?type=3">Cryptographie</a></li>
-                <li><a href="defis.xhtml?type=4">Stéganographie</a></li>
-                <li><a href="defis.xhtml?type=5">Forensic</a></li>
-                <li><a href="defis.xhtml?type=6">Programmation</a></li>
-            </ul>
-        </div>
-      <div id="CTF">
-          <a href="../ctf.xhtml">CTF</a>
+      <div id="content">
+          <ui:insert name="content"/>
       </div>
-        <div id="content">
-          <ui:insert name="content"></ui:insert>
-        </div>
-        <!-- End Content -->
   </div>
 </h:body>
 </html>
